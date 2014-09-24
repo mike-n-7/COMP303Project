@@ -67,6 +67,7 @@ public final class Card implements Comparable<Card>
 	 * @param pCard The card to compare to
 	 * @return Returns a negative integer, zero, or a positive integer 
 	 * as this object is less than, equal to, or greater than pCard
+	 * @author Eric Quinn
 	 */
 	public int compareTo(Card pCard)
 	{
@@ -78,6 +79,7 @@ public final class Card implements Comparable<Card>
 	 * @param pCard The card to test.
 	 * @return true if the two cards are equal
 	 * @see java.lang.Object#equals(java.lang.Object)
+	 * @author Pascale Gourdeau
 	 */
 	@Override
 	public boolean equals( Object pCard ) 
@@ -89,6 +91,7 @@ public final class Card implements Comparable<Card>
 	 * The hashcode for a card is the suit*13 + that of the rank (perfect hash).
 	 * @return the hashcode
 	 * @see java.lang.Object#hashCode()
+	 * @author Michael Noseworthy
 	 */
 	@Override
 	public int hashCode() 
