@@ -113,7 +113,7 @@ public class Hand
 	 */
 	public void createGroup( Set<Card> pCards )
 	{
-		// TODO
+		// TODO /I changed this- Eric
 	}
 	
 	/**
