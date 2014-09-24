@@ -113,7 +113,7 @@ public class Hand
 	 */
 	public void createGroup( Set<Card> pCards )
 	{
-		// TODO /I changed this- Eric
+		// TODO /I changed this- Eric Once again-Eric
 	}
 	
 	/**
@@ -124,7 +124,7 @@ public class Hand
 	 * cards of the hand or if the group is not a valid group.
 	 */
 	public void createRun( Set<Card> pCards )
-	{
+	{	
 		// TODO
 	}
 	
