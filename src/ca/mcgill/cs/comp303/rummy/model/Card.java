@@ -96,6 +96,7 @@ public final class Card implements Comparable<Card>
 	@Override
 	public int hashCode() 
 	{
-		return Integer.MAX_VALUE; // TODO Complete this code.
+		final int lPrime = 13;
+		return aRank.hashCode() + lPrime * aSuit.hashCode();
 	}
 }
