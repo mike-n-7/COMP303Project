@@ -84,7 +84,11 @@ public final class Card implements Comparable<Card>
 	@Override
 	public boolean equals( Object pCard ) 
 	{
-		return true; // TODO Complete this code.
+		if (this.aRank == ((Card) pCard).getRank() && this.aSuit == ((Card) pCard).getSuit()) 
+		{
+			return true;
+		}
+		return false; 
 	}
 
 	/** 
