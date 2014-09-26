@@ -2,6 +2,10 @@ package ca.mcgill.cs.comp303.rummy.model;
 
 import java.util.Iterator;
 
+/**
+ * 
+ * @author Eric
+ */
 public class CardSet implements ICardSet
 {
 	

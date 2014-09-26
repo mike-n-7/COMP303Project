@@ -1,5 +1,6 @@
 package ca.mcgill.cs.comp303.rummy.model;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 /**
@@ -11,8 +12,10 @@ import java.util.Set;
  */
 public class Hand
 {
+	Set<Card> cards;
 	/**
 	 * Creates a new, empty hand.
+	 * @author: Mike
 	 */
 	public Hand()
 	{
@@ -26,6 +29,7 @@ public class Hand
 	 * @throws HandException if the hand is complete.
 	 * @throws HandException if the card is already in the hand.
 	 * @pre pCard != null
+	 * @author: Pascale
 	 */
 	public void add( Card pCard )
 	{
@@ -38,6 +42,7 @@ public class Hand
 	 * pCard is not in the hand.
 	 * @param pCard The card to remove.
 	 * @pre pCard != null
+	 * @author: Mike
 	 */
 	public void remove( Card pCard )
 	{
@@ -46,6 +51,7 @@ public class Hand
 	
 	/**
 	 * @return True if the hand is complete.
+	 * @author: Pascale.
 	 */
 	public boolean isComplete()
 	{
@@ -54,6 +60,7 @@ public class Hand
 	
 	/**
 	 * Removes all the cards from the hand.
+	 * @author: Mike.
 	 */
 	public void clear()
 	{
@@ -62,6 +69,7 @@ public class Hand
 	
 	/**
 	 * @return A copy of the set of matched sets
+	 * @author: Pascale.
 	 */
 	public Set<ICardSet> getMatchedSets()
 	{
@@ -70,6 +78,7 @@ public class Hand
 	
 	/**
 	 * @return A copy of the set of unmatched cards.
+	 * @author: Mike.
 	 */
 	public Set<Card> getUnmatchedCards()
 	{
@@ -78,6 +87,7 @@ public class Hand
 	
 	/**
 	 * @return The number of cards in the hand.
+	 * @author: Pascale.
 	 */
 	public int size()
 	{
@@ -89,7 +99,8 @@ public class Hand
 	 * unmatched card or as part of a set.
 	 * @param pCard The card to check.
 	 * @return true if the card is already in the hand.
-	 * @pre pCard != null
+	 * @pre pCard != null 
+	 * @author Mike
 	 */
 	public boolean contains( Card pCard )
 	{
@@ -98,6 +109,7 @@ public class Hand
 	
 	/**
 	 * @return The total point value of the unmatched cards in this hand.
+	 * @author: Pascale.
 	 */
 	public int score()
 	{
@@ -110,6 +122,7 @@ public class Hand
 	 * @pre pCards != null
 	 * @throws HandException If the cards in pCard are not all unmatched
 	 * cards of the hand or if the group is not a valid group.
+	 * @author: Mike.
 	 */
 	public void createGroup( Set<Card> pCards )
 	{
@@ -122,6 +135,7 @@ public class Hand
 	 * @pre pCards != null
 	 * @throws HandException If the cards in pCard are not all unmatched
 	 * cards of the hand or if the group is not a valid group.
+	 * @author: Pascale.
 	 */
 	public void createRun( Set<Card> pCards )
 	{	
