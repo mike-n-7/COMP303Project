@@ -75,10 +75,12 @@ public class CardSet implements ICardSet
 			};
 		});
 		
+		Card.Suit suit = null;
 		Card.Rank prevRank = null; //Loop through cards, check if each is 1 more than previous
 		for(Card c1 : aList) {
+			if (suit == null) {suit = c1.getSuit(); }
 			if(prevRank == null) { prevRank = c1.getRank(); } //set the first one, then check each after
-			else if( prevRank.ordinal() != (c1.getRank().ordinal() + 1) ) {
+			else if( (prevRank.ordinal() != (c1.getRank().ordinal() + 1)) || suit != c1.getSuit()) {
 					return false;
 			}
 		}
