@@ -2,6 +2,7 @@ package ca.mcgill.cs.comp303.rummy.model;
 
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.HashSet;
 
 /**
  * Models a hand of 10 cards. The hand is not sorted. Not threadsafe.
@@ -12,14 +13,21 @@ import java.util.Set;
  */
 public class Hand
 {
-	Set<Card> cards;
+	private ArrayList<Card> aCards;
+	private ArrayList<Card> aUnmatched;
+	private ArrayList<CardSet> aRuns;
+	private ArrayList<CardSet> aGroups;
+	
 	/**
 	 * Creates a new, empty hand.
 	 * @author: Mike
 	 */
 	public Hand()
 	{
-		// TODO
+		aCards = new ArrayList<Card>();
+		aUnmatched = new ArrayList<Card>();
+		aRuns = new ArrayList<CardSet>();
+		aGroups = new ArrayList<CardSet>();
 	}
 	
 	/**
@@ -46,7 +54,34 @@ public class Hand
 	 */
 	public void remove( Card pCard )
 	{
-		// TODO
+		aCards.remove(pCard);
+		aUnmatched.remove(pCard);
+		// Remove any runs containing the card to remove.
+		ArrayList<CardSet> runsToRemove = new ArrayList<CardSet>();
+		for (CardSet run : aRuns) 
+		{
+			if (run.contains(pCard)) 
+			{
+				runsToRemove.add(run);	
+			}
+		}
+		for (CardSet run : runsToRemove)
+		{
+			aRuns.remove(run);
+		}
+		// Remove any groups containing the card to remove.
+		ArrayList<CardSet> groupsToRemove = new ArrayList<CardSet>();
+		for (CardSet group : aGroups) 
+		{
+			if (group.contains(pCard))
+			{
+				groupsToRemove.add(group);
+			}
+		}
+		for (CardSet group : groupsToRemove)
+		{
+			aGroups.remove(group);
+		}
 	}
 	
 	/**
@@ -64,7 +99,10 @@ public class Hand
 	 */
 	public void clear()
 	{
-		// TODO
+		aCards = new ArrayList<Card>();
+		aUnmatched = new ArrayList<Card>();
+		aRuns = new ArrayList<CardSet>();
+		aGroups = new ArrayList<CardSet>();
 	}
 	
 	/**
@@ -82,7 +120,7 @@ public class Hand
 	 */
 	public Set<Card> getUnmatchedCards()
 	{
-		return null; // TODO
+		return new HashSet<Card>(aUnmatched);
 	}
 	
 	/**
@@ -104,7 +142,7 @@ public class Hand
 	 */
 	public boolean contains( Card pCard )
 	{
-		return false; // TODO
+		return aCards.contains(pCard);
 	}
 	
 	/**
@@ -126,7 +164,29 @@ public class Hand
 	 */
 	public void createGroup( Set<Card> pCards )
 	{
-		// TODO /I changed this- Eric Once again-Eric
+		// Make sure all the cards are unmatched.
+		for (Card card : pCards) 
+		{
+			if (!aUnmatched.contains(card)) 
+			{
+				throw new HandException("The cards are not all unmatched.");
+			}
+		}
+		// Make sure the group is valid.
+		CardSet group = new CardSet(pCards);
+		if (group.isGroup())
+		{
+			aGroups.add(group);
+			// Remove cards from being unmatched.
+			for (Card card : pCards)
+			{
+				aUnmatched.remove(card);
+			}
+		}
+		else 
+		{
+			throw new HandException("Not a valid group.");
+		}
 	}
 	
 	/**
