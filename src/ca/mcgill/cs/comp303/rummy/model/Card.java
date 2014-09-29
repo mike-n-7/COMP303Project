@@ -110,6 +110,6 @@ public final class Card implements Comparable<Card>
 	public int hashCode() 
 	{
 		final int lPrime = 13;
-		return aRank.hashCode() + lPrime * aSuit.hashCode();
+		return aRank.ordinal() + lPrime * (aSuit.ordinal() + 1);
 	}
 }
