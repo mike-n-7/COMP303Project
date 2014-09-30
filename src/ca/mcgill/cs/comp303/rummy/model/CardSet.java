@@ -14,8 +14,10 @@ public class CardSet implements ICardSet
 {
 	private Set<Card> cards;
 	
-	CardSet (Set<Card> input) {
-		for (Card c1 : input) {
+	CardSet (Set<Card> input) 
+	{
+		for (Card c1 : input) 
+		{
 			Card c2 = new Card(c1.getRank(), c1.getSuit());
 			cards.add(c2);
 		}
@@ -42,14 +44,19 @@ public class CardSet implements ICardSet
 	@Override
 	public boolean isGroup()
 	{
-		if (cards.size() == 3 || cards.size() == 4) {return false;} //Need to have three or more cards
+		if (cards.size() != 3 || cards.size() != 4) {return false;} //Need to have three or more cards
 		
 		ArrayList<Card> aList = new ArrayList<Card>(cards);
 		
 		Card.Rank rank = null; //Loop through cards, check if they have the same rank
-		for(Card c1 : aList) {
-			if(rank == null) { rank = c1.getRank(); } //set the first one, then check each after
-			else if( rank.ordinal() != (c1.getRank().ordinal()) ) {
+		for(Card c1 : aList) 
+		{
+			if(rank == null) 
+			{ 
+				rank = c1.getRank(); 
+			} //set the first one, then check each after
+			else if( rank.ordinal() != (c1.getRank().ordinal()) ) 
+			{
 					return false;
 			}
 		}
@@ -63,13 +70,18 @@ public class CardSet implements ICardSet
 		
 		ArrayList<Card> aList = new ArrayList<Card>(cards);
 		Collections.sort(aList, new Comparator<Card>() { //Sorts the cards, so we can check if they are sequential
-			public int compare(Card c1,Card c2) {
-				if(c1.getRank().ordinal() > c2.getRank().ordinal()) {
+			public int compare(Card c1,Card c2) 
+			{
+				if(c1.getRank().ordinal() > c2.getRank().ordinal()) 
+				{
 					return Integer.MAX_VALUE;
 				}
-				else if(c1.getRank().ordinal() == c2.getRank().ordinal()) { 
+				else if(c1.getRank().ordinal() == c2.getRank().ordinal()) 
+				{ 
 					return Integer.MIN_VALUE; 
-				} else {
+				} 
+				else 
+				{
 					return 0; 
 				}
 			};
@@ -77,10 +89,18 @@ public class CardSet implements ICardSet
 		
 		Card.Suit suit = null;
 		Card.Rank prevRank = null; //Loop through cards, check if each is 1 more than previous
-		for(Card c1 : aList) {
-			if (suit == null) {suit = c1.getSuit(); }
-			if(prevRank == null) { prevRank = c1.getRank(); } //set the first one, then check each after
-			else if( (prevRank.ordinal() != (c1.getRank().ordinal() + 1)) || suit != c1.getSuit()) {
+		for(Card c1 : aList) 
+		{
+			if (suit == null) 
+			{
+				suit = c1.getSuit(); 
+			}
+			if(prevRank == null) 
+			{ 
+				prevRank = c1.getRank(); 
+			} //set the first one, then check each after
+			else if( (prevRank.ordinal() != (c1.getRank().ordinal() + 1)) || suit != c1.getSuit()) 
+			{
 					return false;
 			}
 		}
