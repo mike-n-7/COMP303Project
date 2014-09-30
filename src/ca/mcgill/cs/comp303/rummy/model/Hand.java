@@ -17,7 +17,7 @@ public class Hand
 	private ArrayList<Card> aUnmatched;
 	private ArrayList<CardSet> aRuns;
 	private ArrayList<CardSet> aGroups;
-	private static final int HAND_SIZE = 10;
+	private final static int HAND_SIZE = 10;
 	
 	/**
 	 * Creates a new, empty hand.
@@ -100,7 +100,8 @@ public class Hand
 	 */
 	public boolean isComplete()
 	{
-		if (this.size() == HAND_SIZE) {
+		if (this.size() == HAND_SIZE) 
+		{
 			return true;
 		}
 		return false; 
@@ -254,5 +255,7 @@ public class Hand
 	 */
 	public void autoMatch()
 	{
+		
+		HashSet<CardSet> sets = new HashSet<CardSet>();
 	}
 }

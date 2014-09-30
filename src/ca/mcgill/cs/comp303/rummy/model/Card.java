@@ -71,13 +71,16 @@ public final class Card implements Comparable<Card>
 	 */
 	public int compareTo(Card pCard)
 	{
-		if ( this.getSuit().ordinal() > pCard.getSuit().ordinal() ) { //suit overrides all else
+		if ( this.getSuit().ordinal() > pCard.getSuit().ordinal() ) 
+		{ //suit overrides all else
 			return Integer.MAX_VALUE;
 		}
-		if (this.getRank().ordinal() > pCard.getRank().ordinal() && this.getSuit().ordinal() == pCard.getSuit().ordinal() ) { //same suit, higher rank
+		if (this.getRank().ordinal() > pCard.getRank().ordinal() && this.getSuit().ordinal() == pCard.getSuit().ordinal() ) 
+		{ //same suit, higher rank
 			return Integer.MAX_VALUE;
 		}
-		if (this.getRank().ordinal() == pCard.getRank().ordinal() && this.getSuit().ordinal() == pCard.getSuit().ordinal() ) { //same suit and rank returns 0
+		if (this.getRank().ordinal() == pCard.getRank().ordinal() && this.getSuit().ordinal() == pCard.getSuit().ordinal() ) 
+		{ //same suit and rank returns 0
 			return 0;
 		}
 		return Integer.MIN_VALUE;

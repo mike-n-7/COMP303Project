@@ -3,6 +3,7 @@ package ca.mcgill.cs.comp303.rummy.model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -12,41 +13,45 @@ import java.util.Set;
  */
 public class CardSet implements ICardSet
 {
-	private Set<Card> cards;
+	private HashSet<Card> aCards;
 	
-	CardSet (Set<Card> input) 
+	CardSet(Set<Card> pInput) 
 	{
-		for (Card c1 : input) 
+		aCards = new HashSet<Card>();
+		for (Card c1 : pInput) 
 		{
 			Card c2 = new Card(c1.getRank(), c1.getSuit());
-			cards.add(c2);
+			aCards.add(c2);
 		}
 	}
 	
 	@Override
 	public Iterator<Card> iterator()
 	{
-		return cards.iterator();
+		return aCards.iterator();
 	}
 
 	@Override
 	public boolean contains(Card pCard)
 	{
-		return cards.contains(pCard);
+		return aCards.contains(pCard);
 	}
 
 	@Override
 	public int size()
 	{
-		return cards.size();
+		return aCards.size();
 	}
 
 	@Override
 	public boolean isGroup()
 	{
-		if (cards.size() != 3 || cards.size() != 4) {return false;} //Need to have three or more cards
+		if (aCards.size() != 3 || aCards.size() != 4)
+		{
+			return false;
+		} //Need to have three or more cards
 		
-		ArrayList<Card> aList = new ArrayList<Card>(cards);
+		ArrayList<Card> aList = new ArrayList<Card>(aCards);
 		
 		Card.Rank rank = null; //Loop through cards, check if they have the same rank
 		for(Card c1 : aList) 
@@ -66,17 +71,20 @@ public class CardSet implements ICardSet
 	@Override
 	public boolean isRun()
 	{
-		if (cards.size() < 3) {return false;} //Need to have three or more cards
+		if (aCards.size() < 3) 
+		{
+			return false;
+		} //Need to have three or more cards
 		
-		ArrayList<Card> aList = new ArrayList<Card>(cards);
+		ArrayList<Card> aList = new ArrayList<Card>(aCards);
 		Collections.sort(aList, new Comparator<Card>() { //Sorts the cards, so we can check if they are sequential
-			public int compare(Card c1,Card c2) 
+			public int compare(Card pC1, Card pC2) 
 			{
-				if(c1.getRank().ordinal() > c2.getRank().ordinal()) 
+				if(pC1.getRank().ordinal() > pC2.getRank().ordinal()) 
 				{
 					return Integer.MAX_VALUE;
 				}
-				else if(c1.getRank().ordinal() == c2.getRank().ordinal()) 
+				else if(pC1.getRank().ordinal() == pC2.getRank().ordinal()) 
 				{ 
 					return Integer.MIN_VALUE; 
 				} 
