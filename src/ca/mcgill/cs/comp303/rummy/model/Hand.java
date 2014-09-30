@@ -17,6 +17,7 @@ public class Hand
 	private ArrayList<Card> aUnmatched;
 	private ArrayList<CardSet> aRuns;
 	private ArrayList<CardSet> aGroups;
+	private static final int HAND_SIZE = 10;
 	
 	/**
 	 * Creates a new, empty hand.
@@ -39,9 +40,18 @@ public class Hand
 	 * @pre pCard != null
 	 * @author: Pascale
 	 */
-	public void add( Card pCard )
+	public void add( Card pCard ) throws HandException
 	{
-		// TODO
+		if (this.isComplete()) 
+		{ 
+			throw new HandException("The hand is complete.");
+		}
+		if (this.aCards.contains(pCard)) 
+		{
+			throw new HandException("The card is already in the hand.");
+		}
+		this.aUnmatched.add(pCard);
+		return;
 	}
 	
 	/**
@@ -90,7 +100,10 @@ public class Hand
 	 */
 	public boolean isComplete()
 	{
-		return true; // TODO
+		if (this.size() == HAND_SIZE) {
+			return true;
+		}
+		return false; 
 	}
 	
 	/**
@@ -111,7 +124,9 @@ public class Hand
 	 */
 	public Set<ICardSet> getMatchedSets()
 	{
-		return null; // TODO
+		HashSet<ICardSet> matched = new HashSet<ICardSet>(aGroups);
+		matched.addAll(aRuns);
+		return matched;
 	}
 	
 	/**
@@ -129,7 +144,7 @@ public class Hand
 	 */
 	public int size()
 	{
-		return Integer.MAX_VALUE; // TODO
+		return this.aCards.size(); 
 	}
 	
 	/**
@@ -151,7 +166,17 @@ public class Hand
 	 */
 	public int score()
 	{
-		return Integer.MAX_VALUE; // TODO
+		int score = 0;
+		for (Card c : this.aUnmatched)
+		{
+			int cardPoints = c.getRank().ordinal() + 1;
+			if (cardPoints > 10)
+			{
+				cardPoints = 10;
+			}
+			score += cardPoints;
+		}
+		return score; 
 	}
 	
 	/**
@@ -193,13 +218,34 @@ public class Hand
 	 * Creates a run of cards of the same suit.
 	 * @param pCards The cards to group in a run
 	 * @pre pCards != null
-	 * @throws HandException If the cards in pCard are not all unmatched
-	 * cards of the hand or if the group is not a valid group.
+	 * @throws HandException If the cards in pCards are not all unmatched
+	 * cards of the hand or if the run is not a valid run.
 	 * @author: Pascale.
 	 */
-	public void createRun( Set<Card> pCards )
+	public void createRun( Set<Card> pCards ) throws HandException
 	{	
-		// TODO
+		// Make sure all the cards are unmatched
+		for (Card card : pCards) 
+		{
+			if (!aUnmatched.contains(card))
+			{
+				throw new HandException("The cards are not all unmatched!");
+			}
+		}
+		CardSet run = new CardSet(pCards);
+		if (run.isRun())
+		{
+			aRuns.add(run);
+			//Remove from unmatched cards
+			for (Card card : pCards)
+			{
+				aUnmatched.remove(card);
+			}
+		}
+		else 
+		{
+			throw new HandException("This is not a valid run!");
+		}
 	}
 	
 	/**
