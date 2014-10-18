@@ -3,7 +3,7 @@ package ca.mcgill.cs.comp303.rummy.model;
 /**
  * An immutable description of a playing card.
  */
-public final class Card implements Comparable<Card>
+public final class Card implements Comparable<Card>, Cloneable
 {
 	/**
 	 * Represents the rank of the card.
@@ -31,6 +31,12 @@ public final class Card implements Comparable<Card>
 	{
 		aRank = pRank;
 		aSuit = pSuit;
+	}
+	
+	public Card(Card card) 
+	{
+		aRank = card.getRank();
+		aSuit = card.getSuit();
 	}
 	
 	/**
@@ -96,7 +102,15 @@ public final class Card implements Comparable<Card>
 	@Override
 	public boolean equals( Object pCard ) 
 	{
-		if (this.aRank == ((Card) pCard).getRank() && this.aSuit == ((Card) pCard).getSuit()) 
+		if (this == null || pCard == null)
+		{
+			return false;
+		}
+		else if (pCard.getClass() != this.getClass()) 
+		{
+			return false;
+		}
+		else if (this.aRank == ((Card) pCard).getRank() && this.aSuit == ((Card) pCard).getSuit()) 
 		{
 			return true;
 		}
@@ -112,7 +126,13 @@ public final class Card implements Comparable<Card>
 	@Override
 	public int hashCode() 
 	{
-		final int lPrime = 13;
-		return aRank.ordinal() + lPrime * (aSuit.ordinal() + 1);
+		return aRank.ordinal() + Rank.values().length * (aSuit.ordinal() + 1);
 	}
+	
+	@Override
+	protected Card clone() throws CloneNotSupportedException
+	{
+		return (Card) this.clone();
+	}
+	
 }
