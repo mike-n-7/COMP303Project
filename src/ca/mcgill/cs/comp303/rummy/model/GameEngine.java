@@ -1,13 +1,17 @@
 package ca.mcgill.cs.comp303.rummy.model;
 
+import java.util.ArrayList;
+import java.util.Stack;
+
 public class GameEngine
 {
-		
-	public GameEngine() {
-		
-	}
+	private Deck aDeck;
+	private Stack<Card> aDiscard;
+	private ArrayList<GameObserver> aObservers;
+	private ArrayList<Player> aPlayers;
 	
-	public void autoPlay() {
+	
+	public GameEngine() {
 		
 	}
 	
@@ -16,15 +20,67 @@ public class GameEngine
 	}
 	
 	private Player addPlayer(Player.PlayerType type) {
-		if (type == Player.HUMAN) {
-			Player player = new Player(type);
+		Player player = null;
+		if (type == Player.PlayerType.HUMAN) {
+			player = new HumanPlayer(type);
 		}
-		else if (type == Player.COMP) {
-			Player player = new Player(type);
+		else if (type == Player.PlayerType.COMP) {
+			player = new AIPlayer(type);
 		}
 		
 		
 		
 		return player;
 	}
+	
+	public void autoPlay() 
+	{
+		
+	}
+	
+	private Move getMove(Player player) 
+	{
+		return null;
+	}
+	
+	private void newHand()
+	{
+		
+	}
+	
+	private void save()
+	{
+		
+	}
+	
+	private void load()
+	{
+		
+	}
+	
+	private void drawFromDiscard()
+	{
+		
+	}
+	
+	private void peekFromDiscard()
+	{
+		
+	}
+
+	private void drawFromDeck()
+	{
+		
+	}
+
+	
 }
+
+
+
+
+
+
+
+
+

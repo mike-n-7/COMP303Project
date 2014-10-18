@@ -1,6 +1,7 @@
 package ca.mcgill.cs.comp303.rummy.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -256,6 +257,5 @@ public class Hand
 	public void autoMatch()
 	{
 		
-		HashSet<CardSet> sets = new HashSet<CardSet>();
 	}
 }
