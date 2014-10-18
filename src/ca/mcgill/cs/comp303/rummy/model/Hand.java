@@ -1,9 +1,11 @@
 package ca.mcgill.cs.comp303.rummy.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
+
+import ca.mcgill.cs.comp303.rummy.model.Card.Rank;
+import ca.mcgill.cs.comp303.rummy.model.Card.Suit;
 
 /**
  * Models a hand of 10 cards. The hand is not sorted. Not threadsafe.
@@ -14,8 +16,8 @@ import java.util.HashSet;
  */
 public class Hand
 {
-	private ArrayList<Card> aCards;
-	private ArrayList<Card> aUnmatched;
+	private HashSet<Card> aCards;
+	private HashSet<Card> aUnmatched;
 	private ArrayList<CardSet> aRuns;
 	private ArrayList<CardSet> aGroups;
 	private final static int HAND_SIZE = 10;
@@ -26,8 +28,8 @@ public class Hand
 	 */
 	public Hand()
 	{
-		aCards = new ArrayList<Card>();
-		aUnmatched = new ArrayList<Card>();
+		aCards = new HashSet<Card>();
+		aUnmatched = new HashSet<Card>();
 		aRuns = new ArrayList<CardSet>();
 		aGroups = new ArrayList<CardSet>();
 	}
@@ -114,8 +116,8 @@ public class Hand
 	 */
 	public void clear()
 	{
-		aCards = new ArrayList<Card>();
-		aUnmatched = new ArrayList<Card>();
+		aCards = new HashSet<Card>();
+		aUnmatched = new HashSet<Card>();
 		aRuns = new ArrayList<CardSet>();
 		aGroups = new ArrayList<CardSet>();
 	}
@@ -257,5 +259,12 @@ public class Hand
 	public void autoMatch()
 	{
 		
+	}
+	
+
+	public static void main(String[] args)
+	{
+		Hand h = new Hand();
+		h.autoMatch();
 	}
 }

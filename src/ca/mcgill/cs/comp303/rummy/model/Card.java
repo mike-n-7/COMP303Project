@@ -1,5 +1,8 @@
 package ca.mcgill.cs.comp303.rummy.model;
 
+import java.util.Comparator;
+
+
 /**
  * An immutable description of a playing card.
  */
@@ -135,4 +138,25 @@ public final class Card implements Comparable<Card>, Cloneable
 		return (Card) this.clone();
 	}
 	
+	public static Comparator<Card> getBySuitComparator() 
+	{
+		return new Comparator<Card>() 
+				{
+					public int compare(Card pCard1, Card pCard2)
+					{
+						return pCard1.getSuit().compareTo(pCard2.getSuit());
+					}
+				};
+	}
+	
+	public static Comparator<Card> getByRankComparator() 
+	{
+		return new Comparator<Card>() 
+				{
+					public int compare(Card pCard1, Card pCard2)
+					{
+						return pCard1.getRank().compareTo(pCard2.getRank());
+					}
+				};
+	}
 }
