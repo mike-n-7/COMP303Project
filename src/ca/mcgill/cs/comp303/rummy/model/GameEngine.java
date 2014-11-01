@@ -4,12 +4,8 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class GameEngine
-{
-	private Deck aDeck;
-	private Stack<Card> aDiscard;
+{	
 	private ArrayList<GameObserver> aObservers;
-	private ArrayList<Player> aPlayers;
-	
 	
 	public GameEngine() {
 		
