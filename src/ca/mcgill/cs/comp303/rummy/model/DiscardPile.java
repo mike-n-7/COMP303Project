@@ -27,4 +27,20 @@ public class DiscardPile
 	{
 		return aPile.get(1);
 	}
+	
+	public Card draw()
+	{
+		Card toReturn = aPile.remove(1);
+		return toReturn;
+	}
+	
+	public String toString()
+	{
+		String string = "";
+		for (int i = 0; i < aPile.size(); i++)
+		{
+			string.concat(aPile.get(i).toString());
+		}
+		return string;
+	}
 }
