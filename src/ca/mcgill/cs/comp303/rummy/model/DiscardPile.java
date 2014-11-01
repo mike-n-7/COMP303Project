@@ -20,7 +20,7 @@ public class DiscardPile
 	
 	public List<Card> getCards()
 	{
-		return Collections.unmodifiableList((List<? extends Card>) aPile);
+		return Collections.unmodifiableList(aPile);
 	}
 	
 	public Card getTop()
