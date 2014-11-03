@@ -17,7 +17,6 @@ public abstract class Player
 		aType = pType;
 		aHand = new Hand();
 		aHandsWon = 0;
-		
 	}
 	
 	public PlayerType getType()
@@ -35,6 +34,20 @@ public abstract class Player
 		aHand.add(pCard);
 	}
 	
+	public void wipeHand()
+	{
+		aHand.clear();
+	}
 	
+	public void winHand()
+	{
+		aHandsWon++;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "";
+	}
 	
 }

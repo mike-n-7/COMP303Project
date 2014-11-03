@@ -65,4 +65,14 @@ public class Deck
 	{
 		return aCards.size();
 	}
+	
+	public String toString()
+	{
+		String string = "";
+		for (Card card: aCards)
+		{
+			string.concat(card.toString());
+		}
+		return string;
+	}
 }

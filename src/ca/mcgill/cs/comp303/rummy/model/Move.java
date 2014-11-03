@@ -4,7 +4,7 @@ public class Move
 {
 	public enum MoveType
 	{
-		DRAWPIILE, DRAWDECK, DISCARD, KNOCK
+		DRAWPILE, DRAWDECK, DISCARD, KNOCK
 	}
 	
 	private MoveType aType;
