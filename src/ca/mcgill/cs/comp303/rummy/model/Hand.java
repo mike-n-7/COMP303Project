@@ -1,6 +1,7 @@
 package ca.mcgill.cs.comp303.rummy.model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -261,6 +262,10 @@ public class Hand
 		
 	}
 	
+	public Set<Card> getCards()
+	{
+		return Collections.unmodifiableSet(aCards);
+	}
 
 	public static void main(String[] args)
 	{
